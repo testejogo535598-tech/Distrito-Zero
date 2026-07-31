@@ -6,6 +6,7 @@ import "./style.css";
 function App() {
   const [carrinho, setCarrinho] = useState([]);
   const [mostrarCarrinho, setMostrarCarrinho] = useState(false);
+  const [categoria, setCategoria] = useState("Todos");
   const [gametag, setGametag] = useState("");
   const [observacao, setObservacao] = useState("");
   const [pedidoEnviado, setPedidoEnviado] = useState(false);
@@ -32,6 +33,24 @@ function App() {
     setPedidoEnviado(true);
   }
 
+  const categorias = [
+    "Todos",
+    "Armamentos",
+    "Equipamentos",
+    "Veículos",
+    "Raid",
+    "Serviços Especiais",
+    "Ervas Medicinais",
+    "Bandeiras e Conquistas"
+  ];
+
+  const produtosFiltrados =
+    categoria === "Todos"
+      ? produtos
+      : produtos.filter(
+          (produto) => produto.categoria === categoria
+        );
+
   return (
     <div className="app">
 
@@ -44,17 +63,39 @@ function App() {
         </button>
       </header>
 
+
       {!mostrarCarrinho ? (
+
         <>
+
           <h2>Catálogo</h2>
 
+
+          <div className="categorias">
+
+            {categorias.map((cat) => (
+
+              <button
+                key={cat}
+                onClick={() => setCategoria(cat)}
+              >
+                {cat}
+              </button>
+
+            ))}
+
+          </div>
+
+
           <div className="catalogo">
-            {produtos.map((produto) => (
+
+            {produtosFiltrados.map((produto) => (
+
               <div className="produto" key={produto.id}>
 
                 <h3>{produto.nome}</h3>
 
-                <p className="categoria">
+                <p>
                   {produto.categoria}
                 </p>
 
@@ -73,19 +114,28 @@ function App() {
                 </button>
 
               </div>
+
             ))}
+
           </div>
+
         </>
+
       ) : (
+
         <div className="carrinho">
 
           <h2>🛒 Carrinho</h2>
 
+
           {carrinho.length === 0 ? (
+
             <p>Carrinho vazio</p>
+
           ) : (
 
             carrinho.map((item, index) => (
+
               <div className="produto" key={index}>
 
                 <p>
@@ -103,9 +153,11 @@ function App() {
                 </button>
 
               </div>
+
             ))
 
           )}
+
 
           <h3>
             Total: {total} DZ Coins
@@ -113,6 +165,7 @@ function App() {
 
 
           <h2>Finalizar Pedido</h2>
+
 
           <input
             placeholder="Gametag do jogador"
@@ -139,12 +192,15 @@ function App() {
 
 
           {pedidoEnviado && (
+
             <h3>
               🟡 Pedido enviado — Aguardando pagamento
             </h3>
+
           )}
 
         </div>
+
       )}
 
     </div>
