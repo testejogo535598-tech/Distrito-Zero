@@ -5,13 +5,29 @@ function Produtos() {
     <section>
       <h2>Catálogo</h2>
 
-      {produtos.map((item) => (
-        <div key={item.id}>
-          <h3>{item.nome}</h3>
-          <p>Categoria: {item.categoria}</p>
-          <p>Preço: {item.preco} {item.moeda}</p>
-        </div>
-      ))}
+      <div className="grid-produtos">
+        {produtos.map((item) => (
+          <div className="card-produto" key={item.id}>
+            <div className="imagem-produto">
+              📦
+            </div>
+
+            <h3>{item.nome}</h3>
+
+            <p>
+              <strong>Categoria:</strong> {item.categoria}
+            </p>
+
+            <p className="preco">
+              💰 {item.preco} {item.moeda}
+            </p>
+
+            <button className="btn-comprar">
+              Comprar
+            </button>
+          </div>
+        ))}
+      </div>
     </section>
   )
 }
