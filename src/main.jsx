@@ -23,9 +23,9 @@ function App() {
 
       <h2>Catálogo</h2>
 
-      <div>
-        {produtos.map((produto) => (
-          <div key={produto.id}>
+      <div> className="produtos">
+  {produtos.map((produto) => (
+    <div className="card" key={produto.id}>
             <h3>{produto.nome}</h3>
             <p>{produto.categoria}</p>
             <p>{produto.descricao}</p>
