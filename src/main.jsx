@@ -29,8 +29,7 @@ function App() {
             <h3>{produto.nome}</h3>
             <p>{produto.categoria}</p>
             <p>{produto.descricao}</p>
-            <strong>{produto.preco} DZ Coins</strong>
-            <br />
+            <strong className="preco">{produto.preco} DZ Coins</strong >   <br />
             <button onClick={() => adicionar(produto)}>
               Adicionar ao carrinho
             </button>
