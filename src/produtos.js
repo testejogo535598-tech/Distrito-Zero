@@ -1,60 +1,89 @@
 const produtos = [
   {
     id: 1,
-    nome: "Kit Tóxico Completo",
-    categoria: "Equipamentos",
-    preco: 1000,
-    descricao: "Kit completo para operações."
-  },
-  {
-    id: 2,
     nome: "UMP Completa",
     categoria: "Armamentos",
     preco: 1000,
-    descricao: "Submetralhadora UMP equipada."
+    descricao: "Submetralhadora UMP equipada para combates rápidos."
   },
   {
-    id: 3,
+    id: 2,
     nome: "M4 Completa",
     categoria: "Armamentos",
     preco: 11000,
-    descricao: "Rifle M4 equipado para combate."
+    descricao: "Rifle de assalto M4 equipado para operações táticas."
   },
   {
-    id: 4,
+    id: 3,
     nome: "M16 Completa",
     categoria: "Armamentos",
     preco: 800,
-    descricao: "Rifle de assalto M16."
+    descricao: "Rifle de assalto M16 para combate."
+  },
+  {
+    id: 4,
+    nome: "AK74 Completa",
+    categoria: "Armamentos",
+    preco: 850,
+    descricao: "Rifle AK74 completo."
   },
   {
     id: 5,
-    nome: "Blaze Completa",
-    categoria: "Armamentos Especiais",
-    preco: 2000,
-    descricao: "Rifle de precisão Blaze."
+    nome: "Bison Completa",
+    categoria: "Armamentos",
+    preco: 560,
+    descricao: "Arma automática compacta."
   },
   {
     id: 6,
-    nome: "Tundra Completa",
+    nome: "AKM da Maldade",
     categoria: "Armamentos Especiais",
-    preco: 4000,
-    descricao: "Rifle de precisão Tundra."
+    preco: 10000,
+    descricao: "AKM especial para operações avançadas."
   },
   {
     id: 7,
-    nome: "Plate Carrier Completo",
-    categoria: "Equipamentos",
-    preco: 3000,
-    descricao: "Colete tático completo."
+    nome: "FAL Completa",
+    categoria: "Armamentos Especiais",
+    preco: 10000,
+    descricao: "Rifle de batalha de alto poder."
   },
   {
     id: 8,
-    nome: "Visão Noturna",
-    categoria: "Equipamentos",
-    preco: 1000,
-    descricao: "Equipamento para operações noturnas."
-  }
-];
-
-export default produtos;
+    nome: "Tundra Completa",
+    categoria: "Armamentos Especiais",
+    preco: 4000,
+    descricao: "Rifle de precisão para longas distâncias."
+  },
+  {
+    id: 9,
+    nome: "Blaze Completa",
+    categoria: "Armamentos Especiais",
+    preco: 2000,
+    descricao: "Rifle de precisão de alto impacto."
+  },
+  {
+    id: 10,
+    nome: "SVD",
+    categoria: "Armamentos Especiais",
+    preco: 15000,
+    descricao: "Rifle de precisão militar."
+  },
+  {
+    id: 11,
+    nome: "DMR",
+    categoria: "Armamentos Especiais",
+    preco: 14000,
+    descricao: "Rifle semi automático para precisão."
+  },
+  {
+    id: 12,
+    nome: "SCAR-H",
+    categoria: "Armamentos Especiais",
+    preco: 16000,
+    descricao: "Rifle moderno de alto desempenho."
+  },
+  {
+    id: 13,
+    nome: "Mosin",
+    categoria: "Armamentos Especiais
