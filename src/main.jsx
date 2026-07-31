@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import produtos from "./produtos";
-import "./estilo.css";
+import "./style.css";
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);
@@ -33,7 +33,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app">
 
       <header>
         <h1>Distrito Zero</h1>
@@ -44,49 +44,59 @@ function App() {
         </button>
       </header>
 
-
       {!mostrarCarrinho ? (
         <>
           <h2>Catálogo</h2>
 
-          {produtos.map((produto) => (
-            <div key={produto.id}>
+          <div className="catalogo">
+            {produtos.map((produto) => (
+              <div className="produto" key={produto.id}>
 
-              <h3>{produto.nome}</h3>
+                <h3>{produto.nome}</h3>
 
-              <p>{produto.categoria}</p>
+                <p className="categoria">
+                  {produto.categoria}
+                </p>
 
-              <p>{produto.descricao}</p>
+                <p>
+                  {produto.descricao}
+                </p>
 
-              <strong>
-                {produto.preco} DZ Coins
-              </strong>
+                <strong>
+                  {produto.preco} DZ Coins
+                </strong>
 
-              <br />
+                <br />
 
-              <button onClick={() => adicionar(produto)}>
-                Adicionar ao carrinho
-              </button>
+                <button onClick={() => adicionar(produto)}>
+                  Adicionar ao carrinho
+                </button>
 
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </>
       ) : (
+        <div className="carrinho">
 
-        <>
-
-          <h2>Carrinho</h2>
+          <h2>🛒 Carrinho</h2>
 
           {carrinho.length === 0 ? (
             <p>Carrinho vazio</p>
           ) : (
 
             carrinho.map((item, index) => (
-              <div key={index}>
+              <div className="produto" key={index}>
 
                 <p>
-                  {item.nome} - {item.preco} DZ Coins
+                  {item.nome}
                 </p>
+
+                <strong>
+                  {item.preco} DZ Coins
+                </strong>
+
+                <br />
 
                 <button onClick={() => remover(index)}>
                   Remover
@@ -104,9 +114,7 @@ function App() {
 
           <h2>Finalizar Pedido</h2>
 
-
           <input
-            type="text"
             placeholder="Gametag do jogador"
             value={gametag}
             onChange={(e) => setGametag(e.target.value)}
@@ -136,7 +144,7 @@ function App() {
             </h3>
           )}
 
-        </>
+        </div>
       )}
 
     </div>
