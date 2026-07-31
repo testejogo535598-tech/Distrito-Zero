@@ -34,68 +34,77 @@ const produtos = [
     preco: 560,
     descricao: "Arma automática compacta."
   },
+
   {
-    id: 6,
-    nome: "FAL Completa",
-    categoria: "Armamentos Especiais",
-    preco: 10000,
-    descricao: "Rifle de batalha de alto poder."
+    id: 15,
+    nome: "Olga",
+    categoria: "Veículos",
+    preco: 12000,
+    descricao: "Sedan clássico para transporte e operações."
   },
   {
-    id: 7,
-    nome: "AKM da Maldade",
-    categoria: "Armamentos Especiais",
-    preco: 10000,
-    descricao: "AKM especial para operações avançadas."
+    id: 16,
+    nome: "Sarka",
+    categoria: "Veículos",
+    preco: 12000,
+    descricao: "Veículo resistente para transporte."
   },
   {
-    id: 8,
-    nome: "Tundra Completa",
-    categoria: "Armamentos Especiais",
-    preco: 4000,
-    descricao: "Rifle de precisão para longas distâncias."
-  },
-  {
-    id: 9,
-    nome: "Blaze Completa",
-    categoria: "Armamentos Especiais",
-    preco: 2000,
-    descricao: "Rifle de precisão de alto impacto."
-  },
-  {
-    id: 10,
-    nome: "SVD",
-    categoria: "Armamentos Especiais",
+    id: 17,
+    nome: "Gunter",
+    categoria: "Veículos",
     preco: 15000,
-    descricao: "Rifle de precisão militar."
+    descricao: "Veículo rápido para movimentação."
   },
   {
-    id: 11,
-    nome: "DMR",
-    categoria: "Armamentos Especiais",
-    preco: 14000,
-    descricao: "Rifle semi automático de precisão."
+    id: 18,
+    nome: "Ada 4x4",
+    categoria: "Veículos",
+    preco: 15000,
+    descricao: "Veículo preparado para terrenos difíceis."
   },
   {
-    id: 12,
-    nome: "SCAR-H",
-    categoria: "Armamentos Especiais",
-    preco: 16000,
-    descricao: "Rifle moderno de alto desempenho."
+    id: 19,
+    nome: "Caminhão",
+    categoria: "Veículos",
+    preco: 30000,
+    descricao: "Veículo de transporte de cargas."
   },
   {
-    id: 13,
-    nome: "Mosin",
-    categoria: "Armamentos Especiais",
-    preco: 3000,
-    descricao: "Rifle clássico de precisão."
+    id: 20,
+    nome: "Humvee",
+    categoria: "Veículos",
+    preco: 50000,
+    descricao: "Veículo militar de alto valor."
+  },
+
+  {
+    id: 21,
+    nome: "Mecânica do Olga",
+    categoria: "Veículos",
+    preco: 2000,
+    descricao: "Peças mecânicas completas para Olga."
   },
   {
-    id: 14,
-    nome: "Winchester 70",
-    categoria: "Armamentos Especiais",
-    preco: 5000,
-    descricao: "Rifle de caça de longa distância."
+    id: 22,
+    nome: "Mecânica do Sarka",
+    categoria: "Veículos",
+    preco: 2000,
+    descricao: "Peças mecânicas completas para Sarka."
+  },
+  {
+    id: 23,
+    nome: "Mecânica do Gunter",
+    categoria: "Veículos",
+    preco: 1500,
+    descricao: "Peças mecânicas completas para Gunter."
+  },
+  {
+    id: 24,
+    nome: "Mecânica do Ada",
+    categoria: "Veículos",
+    preco: 1800,
+    descricao: "Peças mecânicas completas para Ada."
   }
 ];
 
