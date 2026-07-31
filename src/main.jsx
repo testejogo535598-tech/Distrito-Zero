@@ -11,11 +11,41 @@ function App() {
   const [pedidoEnviado, setPedidoEnviado] = useState(false);
 
   function adicionar(produto) {
-    setCarrinho([...carrinho, produto]);
+    const existe = carrinho.find(
+      (item) => item.id === produto.id
+    );
+
+    if (existe) {
+      setCarrinho(
+        carrinho.map((item) =>
+          item.id === produto.id
+            ? {
+                ...item,
+                quantidade: item.quantidade + 1,
+              }
+            : item
+        )
+      );
+    } else {
+      setCarrinho([
+        ...carrinho,
+        {
+          ...produto,
+          quantidade: 1,
+        },
+      ]);
+    }
+  }
+
+  function remover(id) {
+    setCarrinho(
+      carrinho.filter((item) => item.id !== id)
+    );
   }
 
   const total = carrinho.reduce(
-    (soma, item) => soma + item.preco,
+    (soma, item) =>
+      soma + item.preco * item.quantidade,
     0
   );
 
@@ -38,8 +68,11 @@ function App() {
 
       <h2>Catálogo</h2>
 
+
       <div className="produtos">
+
         {produtos.map((produto) => (
+
           <div className="card" key={produto.id}>
 
             <h3>{produto.nome}</h3>
@@ -59,8 +92,11 @@ function App() {
             </button>
 
           </div>
+
         ))}
+
       </div>
+
 
 
       {abrirCarrinho && (
@@ -76,18 +112,35 @@ function App() {
 
           ) : (
 
-            carrinho.map((item, index) => (
+            carrinho.map((item) => (
 
-              <p key={index}>
-                {item.nome} - {item.preco} DZ Coins
-              </p>
+              <div key={item.id}>
+
+                <p>
+                  {item.nome}
+                  <br />
+                  Quantidade: {item.quantidade}
+                  <br />
+                  Valor:
+                  {item.preco * item.quantidade} DZ Coins
+                </p>
+
+
+                <button onClick={() => remover(item.id)}>
+                  ❌ Remover
+                </button>
+
+              </div>
 
             ))
 
           )}
 
 
-          <h3>Total: {total} DZ Coins</h3>
+          <h3>
+            Total: {total} DZ Coins
+          </h3>
+
 
 
           <h2>Finalizar pedido</h2>
@@ -96,14 +149,18 @@ function App() {
           <input
             placeholder="Gametag do jogador"
             value={gametag}
-            onChange={(e) => setGametag(e.target.value)}
+            onChange={(e) =>
+              setGametag(e.target.value)
+            }
           />
 
 
           <textarea
             placeholder="Observação do pedido"
             value={observacao}
-            onChange={(e) => setObservacao(e.target.value)}
+            onChange={(e) =>
+              setObservacao(e.target.value)
+            }
           />
 
 
@@ -112,12 +169,23 @@ function App() {
           </button>
 
 
+
           {pedidoEnviado && (
-            <p>
-              ✅ Pedido enviado<br />
-              Status: Aguardando pagamento
-            </p>
+
+            <div>
+
+              <h3>
+                ✅ Pedido enviado
+              </h3>
+
+              <p>
+                Status: Aguardando pagamento
+              </p>
+
+            </div>
+
           )}
+
 
 
           <button onClick={() => setAbrirCarrinho(false)}>
@@ -134,6 +202,8 @@ function App() {
 }
 
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
   <App />
 );
