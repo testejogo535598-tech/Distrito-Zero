@@ -74,7 +74,7 @@ const produtos = [
     nome: "DMR",
     categoria: "Armamentos Especiais",
     preco: 14000,
-    descricao: "Rifle semi automático para precisão."
+    descricao: "Rifle semi automático de precisão."
   },
   {
     id: 12,
@@ -86,4 +86,17 @@ const produtos = [
   {
     id: 13,
     nome: "Mosin",
-    categoria: "Armamentos Especiais
+    categoria: "Armamentos Especiais",
+    preco: 3000,
+    descricao: "Rifle clássico de precisão."
+  },
+  {
+    id: 14,
+    nome: "Winchester 70",
+    categoria: "Armamentos Especiais",
+    preco: 5000,
+    descricao: "Rifle de caça de longa distância."
+  }
+];
+
+export default produtos;
