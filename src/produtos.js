@@ -49,62 +49,101 @@ const produtos = [
     preco: 12000,
     descricao: "Veículo resistente para transporte."
   },
+
   {
-    id: 17,
-    nome: "Gunter",
-    categoria: "Veículos",
-    preco: 15000,
-    descricao: "Veículo rápido para movimentação."
+    id: 25,
+    nome: "Plate Carrier Completo",
+    categoria: "Equipamentos",
+    preco: 3000,
+    descricao: "Colete tático completo para proteção."
   },
   {
-    id: 18,
-    nome: "Ada 4x4",
-    categoria: "Veículos",
-    preco: 15000,
-    descricao: "Veículo preparado para terrenos difíceis."
+    id: 26,
+    nome: "Cinto Completo",
+    categoria: "Equipamentos",
+    preco: 450,
+    descricao: "Cinto equipado para operações."
   },
   {
-    id: 19,
-    nome: "Caminhão",
-    categoria: "Veículos",
-    preco: 30000,
-    descricao: "Veículo de transporte de cargas."
+    id: 27,
+    nome: "Mochila 90",
+    categoria: "Equipamentos",
+    preco: 2500,
+    descricao: "Mochila de grande capacidade."
   },
   {
-    id: 20,
-    nome: "Humvee",
-    categoria: "Veículos",
-    preco: 50000,
-    descricao: "Veículo militar de alto valor."
+    id: 28,
+    nome: "Visão Noturna",
+    categoria: "Equipamentos",
+    preco: 1000,
+    descricao: "Equipamento de visão noturna."
   },
 
   {
-    id: 21,
-    nome: "Mecânica do Olga",
-    categoria: "Veículos",
+    id: 29,
+    nome: "Kit Raid",
+    categoria: "Raid",
+    preco: 100000,
+    descricao: "Kit completo para operações de invasão."
+  },
+  {
+    id: 30,
+    nome: "20 Minas da Maldade",
+    categoria: "Raid",
     preco: 2000,
-    descricao: "Peças mecânicas completas para Olga."
+    descricao: "Equipamentos para operações ofensivas."
   },
   {
-    id: 22,
-    nome: "Mecânica do Sarka",
-    categoria: "Veículos",
-    preco: 2000,
-    descricao: "Peças mecânicas completas para Sarka."
+    id: 31,
+    nome: "Granadeira + Munição",
+    categoria: "Raid",
+    preco: 100000,
+    descricao: "Equipamento pesado para operações especiais."
+  },
+
+  {
+    id: 32,
+    nome: "Armazenamento 5x5",
+    categoria: "Serviços Especiais",
+    preco: 10000,
+    descricao: "Aluguel de espaço para armazenamento de itens."
   },
   {
-    id: 23,
-    nome: "Mecânica do Gunter",
-    categoria: "Veículos",
-    preco: 1500,
-    descricao: "Peças mecânicas completas para Gunter."
+    id: 33,
+    nome: "Transporte de Cargas",
+    categoria: "Serviços Especiais",
+    preco: 5000,
+    descricao: "Serviço de transporte e entrega de cargas."
   },
   {
-    id: 24,
-    nome: "Mecânica do Ada",
-    categoria: "Veículos",
-    preco: 1800,
-    descricao: "Peças mecânicas completas para Ada."
+    id: 34,
+    nome: "Aluguel de Veículo",
+    categoria: "Serviços Especiais",
+    preco: 5000,
+    descricao: "Aluguel de veículo por período determinado."
+  },
+
+  {
+    id: 35,
+    nome: "Ervas Medicinais (50 unidades)",
+    categoria: "Ervas Medicinais",
+    preco: 15000,
+    descricao: "Compra de lote com 50 unidades de ervas medicinais."
+  },
+
+  {
+    id: 36,
+    nome: "Braçadeira de Classe Inimiga",
+    categoria: "Bandeiras e Conquistas",
+    preco: 1000,
+    descricao: "Registre sua conquista usando a braçadeira inimiga."
+  },
+  {
+    id: 37,
+    nome: "Bandeira Inimiga",
+    categoria: "Bandeiras e Conquistas",
+    preco: 20000,
+    descricao: "Sua vitória merece uma marca. Registre sua conquista e mostre o domínio da sua equipe."
   }
 ];
 
