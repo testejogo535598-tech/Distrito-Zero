@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import produtos from "./produtos";
+import "./style.css";
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);
@@ -23,13 +24,21 @@ function App() {
 
       <h2>Catálogo</h2>
 
-      <div> className="produtos">
-  {produtos.map((produto) => (
-    <div className="card" key={produto.id}>
+      <div className="produtos">
+        {produtos.map((produto) => (
+          <div className="card" key={produto.id}>
             <h3>{produto.nome}</h3>
+
             <p>{produto.categoria}</p>
+
             <p>{produto.descricao}</p>
-            <strong className="preco">{produto.preco} DZ Coins</strong >   <br />
+
+            <strong className="preco">
+              {produto.preco} DZ Coins
+            </strong>
+
+            <br />
+
             <button onClick={() => adicionar(produto)}>
               Adicionar ao carrinho
             </button>
@@ -39,23 +48,25 @@ function App() {
 
       <hr />
 
-      <h2>Carrinho</h2>
+      <div className="carrinho">
+        <h2>Carrinho</h2>
 
-      {carrinho.length === 0 ? (
-        <p>Carrinho vazio</p>
-      ) : (
-        carrinho.map((item, index) => (
-          <p key={index}>
-            {item.nome} - {item.preco} DZ Coins
-          </p>
-        ))
-      )}
+        {carrinho.length === 0 ? (
+          <p>Carrinho vazio</p>
+        ) : (
+          carrinho.map((item, index) => (
+            <p key={index}>
+              {item.nome} - {item.preco} DZ Coins
+            </p>
+          ))
+        )}
 
-      <h3>Total: {total} DZ Coins</h3>
+        <h3>Total: {total} DZ Coins</h3>
 
-      <button>
-        Finalizar pedido
-      </button>
+        <button>
+          Finalizar pedido
+        </button>
+      </div>
     </div>
   );
 }
