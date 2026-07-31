@@ -4,11 +4,35 @@ import produtos from "./produtos";
 import "./style.css";
 
 function App() {
+  const [categoria, setCategoria] = useState("Todos");
   const [carrinho, setCarrinho] = useState([]);
   const [abrirCarrinho, setAbrirCarrinho] = useState(false);
   const [gametag, setGametag] = useState("");
   const [observacao, setObservacao] = useState("");
   const [pedidoEnviado, setPedidoEnviado] = useState(false);
+
+
+  const categorias = [
+    "Todos",
+    "Armamentos",
+    "Armamentos Especiais",
+    "Raid e Operações",
+    "Equipamentos",
+    "Veículos",
+    "Serviços Especiais",
+    "Ervas Medicinais",
+    "Bandeiras e Braçadeiras"
+  ];
+
+
+  const produtosFiltrados =
+    categoria === "Todos"
+      ? produtos
+      : produtos.filter(
+          (produto) =>
+            produto.categoria === categoria
+        );
+
 
   function adicionar(produto) {
     const existe = carrinho.find(
@@ -21,7 +45,8 @@ function App() {
           item.id === produto.id
             ? {
                 ...item,
-                quantidade: item.quantidade + 1,
+                quantidade:
+                  item.quantidade + 1,
               }
             : item
         )
@@ -37,21 +62,24 @@ function App() {
     }
   }
 
+
   function remover(id) {
     setCarrinho(
-      carrinho.filter((item) => item.id !== id)
+      carrinho.filter(
+        (item) => item.id !== id
+      )
     );
   }
 
+
   const total = carrinho.reduce(
     (soma, item) =>
-      soma + item.preco * item.quantidade,
+      soma +
+      item.preco *
+      item.quantidade,
     0
   );
 
-  function enviarPedido() {
-    setPedidoEnviado(true);
-  }
 
   return (
     <div>
@@ -66,12 +94,31 @@ function App() {
       </header>
 
 
+      <h2>Categorias</h2>
+
+      <div>
+
+        {categorias.map((cat) => (
+
+          <button
+            key={cat}
+            onClick={() => setCategoria(cat)}
+          >
+            {cat}
+          </button>
+
+        ))}
+
+      </div>
+
+
+
       <h2>Catálogo</h2>
 
 
       <div className="produtos">
 
-        {produtos.map((produto) => (
+        {produtosFiltrados.map((produto) => (
 
           <div className="card" key={produto.id}>
 
@@ -87,7 +134,11 @@ function App() {
 
             <br />
 
-            <button onClick={() => adicionar(produto)}>
+            <button
+              onClick={() =>
+                adicionar(produto)
+              }
+            >
               Adicionar ao carrinho
             </button>
 
@@ -98,7 +149,6 @@ function App() {
       </div>
 
 
-
       {abrirCarrinho && (
 
         <div className="carrinho">
@@ -106,41 +156,37 @@ function App() {
           <h2>🛒 Seu Carrinho</h2>
 
 
-          {carrinho.length === 0 ? (
+          {carrinho.map((item) => (
 
-            <p>Carrinho vazio</p>
+            <div key={item.id}>
 
-          ) : (
+              <p>
+                {item.nome}
+                <br />
+                Quantidade:
+                {item.quantidade}
+                <br />
+                {item.preco *
+                item.quantidade}
+                DZ Coins
+              </p>
 
-            carrinho.map((item) => (
+              <button
+                onClick={() =>
+                  remover(item.id)
+                }
+              >
+                ❌ Remover
+              </button>
 
-              <div key={item.id}>
+            </div>
 
-                <p>
-                  {item.nome}
-                  <br />
-                  Quantidade: {item.quantidade}
-                  <br />
-                  Valor:
-                  {item.preco * item.quantidade} DZ Coins
-                </p>
-
-
-                <button onClick={() => remover(item.id)}>
-                  ❌ Remover
-                </button>
-
-              </div>
-
-            ))
-
-          )}
+          ))}
 
 
           <h3>
             Total: {total} DZ Coins
           </h3>
-
 
 
           <h2>Finalizar pedido</h2>
@@ -164,34 +210,21 @@ function App() {
           />
 
 
-          <button onClick={enviarPedido}>
+          <button
+            onClick={() =>
+              setPedidoEnviado(true)
+            }
+          >
             Enviar pedido
           </button>
 
 
-
           {pedidoEnviado && (
-
-            <div>
-
-              <h3>
-                ✅ Pedido enviado
-              </h3>
-
-              <p>
-                Status: Aguardando pagamento
-              </p>
-
-            </div>
-
+            <p>
+              ✅ Pedido enviado<br />
+              Status: Aguardando pagamento
+            </p>
           )}
-
-
-
-          <button onClick={() => setAbrirCarrinho(false)}>
-            Fechar carrinho
-          </button>
-
 
         </div>
 
