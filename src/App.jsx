@@ -1,10 +1,11 @@
-import Header from './components/Header.jsx'
+import Header from './components/Header'
+import Produtos from './components/Produtos'
 
 function App() {
   return (
     <>
       <Header />
-      <h2>Distrito Zero</h2>
+      <Produtos />
     </>
   )
 }
