@@ -1,85 +1,36 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import produtos from "./produtos";
-import "./style.css";
 
 function App() {
-  const [categoria, setCategoria] = useState("Todos");
   const [carrinho, setCarrinho] = useState([]);
-  const [abrirCarrinho, setAbrirCarrinho] = useState(false);
+  const [mostrarCarrinho, setMostrarCarrinho] = useState(false);
   const [gametag, setGametag] = useState("");
   const [observacao, setObservacao] = useState("");
   const [pedidoEnviado, setPedidoEnviado] = useState(false);
 
-
-  const categorias = [
-    "Todos",
-    "Armamentos",
-    "Armamentos Especiais",
-    "Raid e Operações",
-    "Equipamentos",
-    "Veículos",
-    "Serviços Especiais",
-    "Ervas Medicinais",
-    "Bandeiras e Braçadeiras"
-  ];
-
-
-  const produtosFiltrados =
-    categoria === "Todos"
-      ? produtos
-      : produtos.filter(
-          (produto) =>
-            produto.categoria === categoria
-        );
-
-
   function adicionar(produto) {
-    const existe = carrinho.find(
-      (item) => item.id === produto.id
-    );
-
-    if (existe) {
-      setCarrinho(
-        carrinho.map((item) =>
-          item.id === produto.id
-            ? {
-                ...item,
-                quantidade:
-                  item.quantidade + 1,
-              }
-            : item
-        )
-      );
-    } else {
-      setCarrinho([
-        ...carrinho,
-        {
-          ...produto,
-          quantidade: 1,
-        },
-      ]);
-    }
+    setCarrinho([...carrinho, produto]);
   }
 
-
-  function remover(id) {
-    setCarrinho(
-      carrinho.filter(
-        (item) => item.id !== id
-      )
-    );
+  function remover(index) {
+    const novoCarrinho = carrinho.filter((_, i) => i !== index);
+    setCarrinho(novoCarrinho);
   }
-
 
   const total = carrinho.reduce(
-    (soma, item) =>
-      soma +
-      item.preco *
-      item.quantidade,
+    (soma, item) => soma + item.preco,
     0
   );
 
+  function enviarPedido() {
+    if (!gametag) {
+      alert("Digite sua gametag.");
+      return;
+    }
+
+    setPedidoEnviado(true);
+  }
 
   return (
     <div>
@@ -88,100 +39,63 @@ function App() {
         <h1>Distrito Zero</h1>
         <p>Loja oficial do servidor</p>
 
-        <button onClick={() => setAbrirCarrinho(true)}>
+        <button onClick={() => setMostrarCarrinho(true)}>
           🛒 Carrinho ({carrinho.length})
         </button>
       </header>
 
 
-      <h2>Categorias</h2>
+      {!mostrarCarrinho ? (
 
-      <div>
+        <>
+          <h2>Catálogo</h2>
 
-        {categorias.map((cat) => (
+          {produtos.map((produto) => (
+            <div key={produto.id}>
 
-          <button
-            key={cat}
-            onClick={() => setCategoria(cat)}
-          >
-            {cat}
-          </button>
+              <h3>{produto.nome}</h3>
+              <p>{produto.categoria}</p>
+              <p>{produto.descricao}</p>
 
-        ))}
+              <strong>
+                {produto.preco} DZ Coins
+              </strong>
 
-      </div>
+              <br />
 
-
-
-      <h2>Catálogo</h2>
-
-
-      <div className="produtos">
-
-        {produtosFiltrados.map((produto) => (
-
-          <div className="card" key={produto.id}>
-
-            <h3>{produto.nome}</h3>
-
-            <p>{produto.categoria}</p>
-
-            <p>{produto.descricao}</p>
-
-            <strong className="preco">
-              {produto.preco} DZ Coins
-            </strong>
-
-            <br />
-
-            <button
-              onClick={() =>
-                adicionar(produto)
-              }
-            >
-              Adicionar ao carrinho
-            </button>
-
-          </div>
-
-        ))}
-
-      </div>
-
-
-      {abrirCarrinho && (
-
-        <div className="carrinho">
-
-          <h2>🛒 Seu Carrinho</h2>
-
-
-          {carrinho.map((item) => (
-
-            <div key={item.id}>
-
-              <p>
-                {item.nome}
-                <br />
-                Quantidade:
-                {item.quantidade}
-                <br />
-                {item.preco *
-                item.quantidade}
-                DZ Coins
-              </p>
-
-              <button
-                onClick={() =>
-                  remover(item.id)
-                }
-              >
-                ❌ Remover
+              <button onClick={() => adicionar(produto)}>
+                Adicionar ao carrinho
               </button>
 
             </div>
-
           ))}
+        </>
+
+      ) : (
+
+        <>
+
+          <h2>Carrinho</h2>
+
+          {carrinho.length === 0 ? (
+            <p>Carrinho vazio</p>
+          ) : (
+
+            carrinho.map((item, index) => (
+
+              <div key={index}>
+                <p>
+                  {item.nome} - {item.preco} DZ Coins
+                </p>
+
+                <button onClick={() => remover(index)}>
+                  Remover
+                </button>
+              </div>
+
+            ))
+
+          )}
 
 
           <h3>
@@ -189,44 +103,46 @@ function App() {
           </h3>
 
 
-          <h2>Finalizar pedido</h2>
+          <h2>Finalizar Pedido</h2>
 
 
           <input
             placeholder="Gametag do jogador"
             value={gametag}
-            onChange={(e) =>
-              setGametag(e.target.value)
-            }
+            onChange={(e) => setGametag(e.target.value)}
           />
+
+
+          <br />
 
 
           <textarea
             placeholder="Observação do pedido"
             value={observacao}
-            onChange={(e) =>
-              setObservacao(e.target.value)
-            }
+            onChange={(e) => setObservacao(e.target.value)}
           />
 
 
-          <button
-            onClick={() =>
-              setPedidoEnviado(true)
-            }
-          >
-            Enviar pedido
+          <br />
+
+
+          <button onClick={enviarPedido}>
+            Enviar Pedido
+          </button>
+
+
+          <button onClick={() => setMostrarCarrinho(false)}>
+            Voltar ao catálogo
           </button>
 
 
           {pedidoEnviado && (
-            <p>
-              ✅ Pedido enviado<br />
-              Status: Aguardando pagamento
-            </p>
+            <h3>
+              🟡 Pedido enviado — Aguardando pagamento
+            </h3>
           )}
 
-        </div>
+        </>
 
       )}
 
