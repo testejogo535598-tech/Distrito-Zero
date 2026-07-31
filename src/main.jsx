@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import produtos from "./produtos";
+import "./estilo.css";
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);
@@ -14,8 +15,7 @@ function App() {
   }
 
   function remover(index) {
-    const novoCarrinho = carrinho.filter((_, i) => i !== index);
-    setCarrinho(novoCarrinho);
+    setCarrinho(carrinho.filter((_, i) => i !== index));
   }
 
   const total = carrinho.reduce(
@@ -24,7 +24,7 @@ function App() {
   );
 
   function enviarPedido() {
-    if (!gametag) {
+    if (gametag.trim() === "") {
       alert("Digite sua gametag.");
       return;
     }
@@ -46,7 +46,6 @@ function App() {
 
 
       {!mostrarCarrinho ? (
-
         <>
           <h2>Catálogo</h2>
 
@@ -54,7 +53,9 @@ function App() {
             <div key={produto.id}>
 
               <h3>{produto.nome}</h3>
+
               <p>{produto.categoria}</p>
+
               <p>{produto.descricao}</p>
 
               <strong>
@@ -70,7 +71,6 @@ function App() {
             </div>
           ))}
         </>
-
       ) : (
 
         <>
@@ -82,8 +82,8 @@ function App() {
           ) : (
 
             carrinho.map((item, index) => (
-
               <div key={index}>
+
                 <p>
                   {item.nome} - {item.preco} DZ Coins
                 </p>
@@ -91,12 +91,11 @@ function App() {
                 <button onClick={() => remover(index)}>
                   Remover
                 </button>
-              </div>
 
+              </div>
             ))
 
           )}
-
 
           <h3>
             Total: {total} DZ Coins
@@ -107,13 +106,11 @@ function App() {
 
 
           <input
+            type="text"
             placeholder="Gametag do jogador"
             value={gametag}
             onChange={(e) => setGametag(e.target.value)}
           />
-
-
-          <br />
 
 
           <textarea
@@ -121,9 +118,6 @@ function App() {
             value={observacao}
             onChange={(e) => setObservacao(e.target.value)}
           />
-
-
-          <br />
 
 
           <button onClick={enviarPedido}>
@@ -143,7 +137,6 @@ function App() {
           )}
 
         </>
-
       )}
 
     </div>
