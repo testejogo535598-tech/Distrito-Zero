@@ -5,6 +5,9 @@ import "./style.css";
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);
+  const [gametag, setGametag] = useState("");
+  const [observacao, setObservacao] = useState("");
+  const [pedidoEnviado, setPedidoEnviado] = useState(false);
 
   function adicionar(produto) {
     setCarrinho([...carrinho, produto]);
@@ -14,6 +17,10 @@ function App() {
     (soma, item) => soma + item.preco,
     0
   );
+
+  function enviarPedido() {
+    setPedidoEnviado(true);
+  }
 
   return (
     <div>
@@ -28,9 +35,7 @@ function App() {
         {produtos.map((produto) => (
           <div className="card" key={produto.id}>
             <h3>{produto.nome}</h3>
-
             <p>{produto.categoria}</p>
-
             <p>{produto.descricao}</p>
 
             <strong className="preco">
@@ -45,8 +50,6 @@ function App() {
           </div>
         ))}
       </div>
-
-      <hr />
 
       <div className="carrinho">
         <h2>Carrinho</h2>
@@ -63,9 +66,31 @@ function App() {
 
         <h3>Total: {total} DZ Coins</h3>
 
-        <button>
-          Finalizar pedido
+        <h2>Finalizar pedido</h2>
+
+        <input
+          placeholder="Gametag do jogador"
+          value={gametag}
+          onChange={(e) => setGametag(e.target.value)}
+        />
+
+        <textarea
+          placeholder="Observação do pedido"
+          value={observacao}
+          onChange={(e) => setObservacao(e.target.value)}
+        />
+
+        <button onClick={enviarPedido}>
+          Enviar pedido
         </button>
+
+        {pedidoEnviado && (
+          <div>
+            <h3>Pedido enviado ✅</h3>
+            <p>Status: Aguardando pagamento</p>
+          </div>
+        )}
+
       </div>
     </div>
   );
