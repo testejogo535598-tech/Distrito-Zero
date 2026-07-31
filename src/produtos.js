@@ -18,7 +18,7 @@ const produtos = [
     nome: "M16 Completa",
     categoria: "Armamentos",
     preco: 800,
-    descricao: "Rifle de assalto M16 para combate."
+    descricao: "Rifle de assalto M16."
   },
   {
     id: 4,
@@ -36,17 +36,17 @@ const produtos = [
   },
   {
     id: 6,
-    nome: "AKM da Maldade",
-    categoria: "Armamentos Especiais",
-    preco: 10000,
-    descricao: "AKM especial para operações avançadas."
-  },
-  {
-    id: 7,
     nome: "FAL Completa",
     categoria: "Armamentos Especiais",
     preco: 10000,
     descricao: "Rifle de batalha de alto poder."
+  },
+  {
+    id: 7,
+    nome: "AKM da Maldade",
+    categoria: "Armamentos Especiais",
+    preco: 10000,
+    descricao: "AKM especial para operações avançadas."
   },
   {
     id: 8,
