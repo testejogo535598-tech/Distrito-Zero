@@ -3,10 +3,10 @@ import Produtos from './components/Produtos'
 
 function App() {
   return (
-    <>
+    <div>
       <Header />
       <Produtos />
-    </>
+    </div>
   )
 }
 
