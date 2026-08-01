@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Banner from './components/Banner'
 import Header from './components/Header'
 import Produtos from './components/Produtos'
 import Carrinho from './components/Carrinho'
@@ -48,6 +49,8 @@ function App() {
 
   return (
     <>
+      <Banner />
+
       <Header />
 
       <div style={{ padding: '20px' }}>
@@ -75,7 +78,7 @@ function App() {
             overflowX: 'auto'
           }}
         >
-          {['Todos', 'Armas', 'Veículos', 'Compra', 'Serviços'].map((cat) => (
+          {['Todos', 'Armas', 'Veículos', 'Serviços'].map((cat) => (
             <button
               key={cat}
               className="btn-comprar"
