@@ -41,4 +41,44 @@ function App() {
             ? { ...item, quantidade: item.quantidade - 1 }
             : item
         )
-        .filter((item) => item.quant
+        .filter((item) => item.quantidade > 0)
+    )
+  }
+
+  return (
+    <>
+      <Header />
+
+      <div style={{ padding: '20px' }}>
+        <input
+          type="text"
+          placeholder="🔍 Pesquisar produto..."
+          value={pesquisa}
+          onChange={(e) => setPesquisa(e.target.value)}
+          style={{
+            width: '100%',
+            padding: '15px',
+            borderRadius: '10px',
+            border: '2px solid #2ecc71',
+            background: '#222',
+            color: '#fff',
+            fontSize: '16px'
+          }}
+        />
+      </div>
+
+      <Produtos
+        pesquisa={pesquisa}
+        adicionarAoCarrinho={adicionarAoCarrinho}
+      />
+
+      <Carrinho
+        carrinho={carrinho}
+        aumentarQuantidade={aumentarQuantidade}
+        diminuirQuantidade={diminuirQuantidade}
+      />
+    </>
+  )
+}
+
+export default App
