@@ -48,11 +48,12 @@ function App() {
   }
 
   return (
-    <>
-      <Banner />
+  <>
+    <Banner />
 
+    <ServicosPremium />
 
-      <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px' }}>
         <input
           type="text"
           placeholder="🔍 Pesquisar produto..."
