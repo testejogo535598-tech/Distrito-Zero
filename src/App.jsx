@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Banner from './components/Banner'
-import Header from './components/Header'
 import Produtos from './components/Produtos'
 import Carrinho from './components/Carrinho'
 
@@ -51,7 +50,6 @@ function App() {
     <>
       <Banner />
 
-      <Header />
 
       <div style={{ padding: '20px' }}>
         <input
