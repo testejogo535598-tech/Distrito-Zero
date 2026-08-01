@@ -1,16 +1,16 @@
-import produtos from '../data/produtos'
+import produtos from "../data/produtos";
 
 function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
   const produtosFiltrados = produtos.filter((item) => {
     const pesquisaOk = item.nome
       .toLowerCase()
-      .includes(pesquisa.toLowerCase())
+      .includes(pesquisa.toLowerCase());
 
     const categoriaOk =
-      categoria === 'Todos' || item.categoria === categoria
+      categoria === "Todos" || item.categoria === categoria;
 
-    return pesquisaOk && categoriaOk
-  })
+    return pesquisaOk && categoriaOk;
+  });
 
   return (
     <section>
@@ -26,9 +26,11 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
               className="imagem-produto"
             />
 
-            <h3>{item.nome}</h3>
+            <span className="categoria-badge">
+              {item.categoria}
+            </span>
 
-            <p>Categoria: {item.categoria}</p>
+            <h3>{item.nome}</h3>
 
             <p className="preco">
               💰 {item.preco} {item.moeda}
@@ -38,7 +40,7 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
               className="btn-comprar"
               onClick={() => adicionarAoCarrinho(item)}
             >
-              Comprar
+              🛒 Comprar Agora
             </button>
 
           </div>
@@ -51,7 +53,7 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
         )}
       </div>
     </section>
-  )
+  );
 }
 
-export default Produtos
+export default Produtos;
