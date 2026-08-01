@@ -248,3 +248,64 @@ h2{
   min-width:40px;
   text-align:center;
 }
+
+/* ===== MELHORIAS V2 ===== */
+
+.descricao-produto{
+  color:#cfcfcf;
+  font-size:15px;
+  line-height:1.5;
+  min-height:70px;
+  margin:12px 0;
+}
+
+.servico-card{
+  transition:.3s;
+}
+
+.servico-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 25px rgba(46,204,113,.35);
+}
+
+.aviso-card{
+  transition:.3s;
+}
+
+.aviso-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 25px rgba(46,204,113,.35);
+}
+
+.banner{
+  border-bottom:3px solid #2ecc71;
+}
+
+.status-online{
+  font-weight:bold;
+}
+
+.rodape-links{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:20px 0;
+}
+
+.rodape-links a{
+  color:#2ecc71;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.rodape-links a:hover{
+  color:#fff;
+}
+
+.copyright{
+  color:#999;
+  margin-top:20px;
+  font-size:14px;
+}
