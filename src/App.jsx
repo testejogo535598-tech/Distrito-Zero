@@ -6,6 +6,7 @@ import Carrinho from './components/Carrinho'
 function App() {
   const [carrinho, setCarrinho] = useState([])
   const [pesquisa, setPesquisa] = useState('')
+  const [categoria, setCategoria] = useState('Todos')
 
   function adicionarAoCarrinho(produto) {
     setCarrinho((atual) => {
@@ -62,13 +63,37 @@ function App() {
             border: '2px solid #2ecc71',
             background: '#222',
             color: '#fff',
-            fontSize: '16px'
+            fontSize: '16px',
+            marginBottom: '20px'
           }}
         />
+
+        <div
+          style={{
+            display: 'flex',
+            gap: '10px',
+            overflowX: 'auto'
+          }}
+        >
+          {['Todos', 'Armas', 'Veículos', 'Compra', 'Serviços'].map((cat) => (
+            <button
+              key={cat}
+              className="btn-comprar"
+              onClick={() => setCategoria(cat)}
+              style={{
+                opacity: categoria === cat ? 1 : 0.6,
+                whiteSpace: 'nowrap'
+              }}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
       </div>
 
       <Produtos
         pesquisa={pesquisa}
+        categoria={categoria}
         adicionarAoCarrinho={adicionarAoCarrinho}
       />
 
