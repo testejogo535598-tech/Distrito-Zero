@@ -14,14 +14,17 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
 
   return (
     <section>
-      <h2>📦 Catálogo</h2>
+      <h2>🛒 Catálogo</h2>
 
       <div className="grid-produtos">
         {produtosFiltrados.map((item) => (
           <div className="card-produto" key={item.id}>
-            <div className="imagem-produto">
-              📦
-            </div>
+
+            <img
+              src={item.imagem}
+              alt={item.nome}
+              className="imagem-produto"
+            />
 
             <h3>{item.nome}</h3>
 
@@ -37,6 +40,7 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
             >
               Comprar
             </button>
+
           </div>
         ))}
 
