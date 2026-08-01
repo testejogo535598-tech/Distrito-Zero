@@ -163,11 +163,11 @@ h2{
 }
 
 .imagem-produto{
-  width:150px;
-  height:150px;
+  width:140px;
+  height:140px;
   object-fit:contain;
-  margin:0 auto 20px;
   display:block;
+  margin:0 auto 20px;
 }
 
 .categoria-badge{
@@ -178,12 +178,19 @@ h2{
   border-radius:999px;
   font-size:13px;
   font-weight:bold;
-  margin-bottom:12px;
+  margin-bottom:15px;
 }
 
 .card-produto h3{
   color:#fff;
-  font-size:28px;
+  font-size:26px;
+  line-height:1.2;
+  margin:15px 0 10px;
+  word-break:break-word;
+}
+
+.card-produto p{
+  color:#ddd;
   margin:10px 0;
 }
 
@@ -191,16 +198,16 @@ h2{
   color:#2ecc71;
   font-size:24px;
   font-weight:bold;
-  margin:18px 0;
+  margin:20px 0;
 }
 
 .btn-comprar{
   width:100%;
+  background:#2ecc71;
+  color:#fff;
   border:none;
   border-radius:12px;
   padding:15px;
-  background:#2ecc71;
-  color:#fff;
   font-size:18px;
   font-weight:bold;
   cursor:pointer;
@@ -210,4 +217,34 @@ h2{
 .btn-comprar:hover{
   background:#27ae60;
   transform:scale(1.03);
+}
+
+/* ===== CARRINHO ===== */
+
+.quantidade{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  margin:20px 0;
+}
+
+.quantidade button{
+  width:50px;
+  height:50px;
+  border:none;
+  border-radius:12px;
+  background:#2ecc71;
+  color:#fff;
+  font-size:24px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.quantidade span,
+.quantidade strong{
+  font-size:24px;
+  color:#fff;
+  min-width:40px;
+  text-align:center;
 }
