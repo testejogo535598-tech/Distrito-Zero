@@ -1,9 +1,16 @@
 import produtos from '../data/produtos'
 
-function Produtos({ pesquisa, adicionarAoCarrinho }) {
-  const produtosFiltrados = produtos.filter((item) =>
-    item.nome.toLowerCase().includes(pesquisa.toLowerCase())
-  )
+function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
+  const produtosFiltrados = produtos.filter((item) => {
+    const pesquisaOk = item.nome
+      .toLowerCase()
+      .includes(pesquisa.toLowerCase())
+
+    const categoriaOk =
+      categoria === 'Todos' || item.categoria === categoria
+
+    return pesquisaOk && categoriaOk
+  })
 
   return (
     <section>
