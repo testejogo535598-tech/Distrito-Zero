@@ -32,6 +32,10 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
 
             <h3>{item.nome}</h3>
 
+            <p className="descricao-produto">
+              {item.descricao}
+            </p>
+
             <p className="preco">
               💰 {item.preco} {item.moeda}
             </p>
