@@ -1,12 +1,16 @@
 import produtos from '../data/produtos'
 
-function Produtos({ adicionarAoCarrinho }) {
+function Produtos({ pesquisa, adicionarAoCarrinho }) {
+  const produtosFiltrados = produtos.filter((item) =>
+    item.nome.toLowerCase().includes(pesquisa.toLowerCase())
+  )
+
   return (
     <section>
       <h2>📦 Catálogo</h2>
 
       <div className="grid-produtos">
-        {produtos.map((item) => (
+        {produtosFiltrados.map((item) => (
           <div className="card-produto" key={item.id}>
             <div className="imagem-produto">
               📦
@@ -14,9 +18,7 @@ function Produtos({ adicionarAoCarrinho }) {
 
             <h3>{item.nome}</h3>
 
-            <p>
-              Categoria: {item.categoria}
-            </p>
+            <p>Categoria: {item.categoria}</p>
 
             <p className="preco">
               💰 {item.preco} {item.moeda}
@@ -30,6 +32,12 @@ function Produtos({ adicionarAoCarrinho }) {
             </button>
           </div>
         ))}
+
+        {produtosFiltrados.length === 0 && (
+          <div className="card-produto">
+            <h3>Nenhum produto encontrado.</h3>
+          </div>
+        )}
       </div>
     </section>
   )
