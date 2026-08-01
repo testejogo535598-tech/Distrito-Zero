@@ -5,6 +5,7 @@ import Carrinho from './components/Carrinho'
 
 function App() {
   const [carrinho, setCarrinho] = useState([])
+  const [pesquisa, setPesquisa] = useState('')
 
   function adicionarAoCarrinho(produto) {
     setCarrinho((atual) => {
@@ -40,23 +41,4 @@ function App() {
             ? { ...item, quantidade: item.quantidade - 1 }
             : item
         )
-        .filter((item) => item.quantidade > 0)
-    )
-  }
-
-  return (
-    <>
-      <Header />
-
-      <Produtos adicionarAoCarrinho={adicionarAoCarrinho} />
-
-      <Carrinho
-        carrinho={carrinho}
-        aumentarQuantidade={aumentarQuantidade}
-        diminuirQuantidade={diminuirQuantidade}
-      />
-    </>
-  )
-}
-
-export default App
+        .filter((item) => item.quant
