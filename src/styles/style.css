@@ -1,93 +1,40 @@
-/* ===== ESTILO GERAL ===== */
+/* ===== AVISOS ===== */
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+.avisos{
+  background:#181818;
+  padding:25px 20px;
 }
 
-body{
-  font-family:Arial, Helvetica, sans-serif;
-  background:#121212;
-  color:#ffffff;
-}
-
-#root{
-  max-width:1400px;
-  margin:auto;
-}
-
-section{
-  padding:30px 20px;
-}
-
-h2{
-  margin-bottom:20px;
-  color:#2ecc71;
-  text-align:center;
-}
-
-input{
-  outline:none;
-}
-
-.grid-produtos{
+.avisos-lista{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+  gap:15px;
 }
 
-.card-produto{
-  background:#1d1d1d;
-  border:1px solid #333;
-  border-radius:12px;
-  padding:20px;
-  text-align:center;
-}
-
-.imagem-produto{
-  font-size:60px;
-  margin-bottom:15px;
-}
-
-.preco{
-  color:#2ecc71;
-  font-weight:bold;
-  margin:12px 0;
-}
-
-.btn-comprar{
-  width:100%;
-  background:#2ecc71;
+.aviso-card{
+  background:#222;
+  border-left:4px solid #2ecc71;
+  border-radius:10px;
+  padding:15px;
   color:#fff;
-  border:none;
-  padding:12px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:bold;
 }
 
-.btn-comprar:hover{
-  background:#27ae60;
-}
-
-.quantidade{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:12px;
-  margin:15px 0;
-}
+/* ===== RODAPÉ ===== */
 
 .rodape{
-  background:#0d0d0d;
-  color:#bbb;
+  background:#0b0b0b;
+  border-top:2px solid #2ecc71;
+  padding:35px 20px;
   text-align:center;
-  padding:40px 20px;
-  margin-top:40px;
 }
 
 .rodape h3{
   color:#2ecc71;
   margin-bottom:10px;
+}
+
+.rodape p,
+.rodape small{
+  color:#bdbdbd;
+  margin:6px 0;
 }
