@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import Banner from './components/Banner'
-import ServicosPremium from './components/ServicosPremium'
 import Avisos from './components/Avisos'
+import ServicosPremium from './components/ServicosPremium'
 import Produtos from './components/Produtos'
 import Carrinho from './components/Carrinho'
+import Rodape from './components/Rodape'
 
 function App() {
   const [carrinho, setCarrinho] = useState([])
@@ -49,15 +50,14 @@ function App() {
   }
 
   return (
-    
-<>
-  <Banner />
+    <>
+      <Banner />
 
-  <Avisos />
+      <Avisos />
 
-  <ServicosPremium />
+      <ServicosPremium />
 
-  <div style={{ padding: '20px' }}>
+      <div style={{ padding: '20px' }}>
         <input
           type="text"
           placeholder="🔍 Pesquisar produto..."
@@ -109,6 +109,8 @@ function App() {
         aumentarQuantidade={aumentarQuantidade}
         diminuirQuantidade={diminuirQuantidade}
       />
+
+      <Rodape />
     </>
   )
 }
