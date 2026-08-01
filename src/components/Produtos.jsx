@@ -3,12 +3,11 @@ import produtos from '../data/produtos'
 function Produtos({ adicionarAoCarrinho }) {
   return (
     <section>
-      <h2>Catálogo</h2>
+      <h2>📦 Catálogo</h2>
 
       <div className="grid-produtos">
         {produtos.map((item) => (
           <div className="card-produto" key={item.id}>
-
             <div className="imagem-produto">
               📦
             </div>
@@ -16,7 +15,7 @@ function Produtos({ adicionarAoCarrinho }) {
             <h3>{item.nome}</h3>
 
             <p>
-              <strong>Categoria:</strong> {item.categoria}
+              Categoria: {item.categoria}
             </p>
 
             <p className="preco">
@@ -29,7 +28,6 @@ function Produtos({ adicionarAoCarrinho }) {
             >
               Comprar
             </button>
-
           </div>
         ))}
       </div>
