@@ -11,63 +11,70 @@ function Carrinho({
 
   return (
     <section>
-      <h2>🛒 Carrinho</h2>
+      <h2>🛒 Seu Carrinho</h2>
 
       {carrinho.length === 0 ? (
         <div className="card-produto">
-          <p>Seu carrinho está vazio.</p>
+          <h3>Seu carrinho está vazio</h3>
+          <p>Adicione produtos para continuar.</p>
         </div>
       ) : (
-        carrinho.map((item) => (
-          <div className="card-produto" key={item.id}>
+        <>
+          {carrinho.map((item) => (
+            <div className="card-produto" key={item.id}>
 
-            <h3>{item.nome}</h3>
+              <img
+                src={item.imagem}
+                alt={item.nome}
+                className="imagem-produto"
+              />
 
-            <p>
-              💰 {item.preco} {item.moeda}
-            </p>
+              <h3>{item.nome}</h3>
 
-            <div className="quantidade">
+              <p>{item.preco} {item.moeda}</p>
 
-              <button
-                className="btn-comprar"
-                onClick={() => diminuirQuantidade(item.id)}
-              >
-                −
-              </button>
+              <div className="quantidade">
 
-              <span>
-                {item.quantidade}
-              </span>
+                <button
+                  className="btn-comprar"
+                  onClick={() => diminuirQuantidade(item.id)}
+                >
+                  −
+                </button>
 
-              <button
-                className="btn-comprar"
-                onClick={() => aumentarQuantidade(item.id)}
-              >
-                +
-              </button>
+                <strong>{item.quantidade}</strong>
+
+                <button
+                  className="btn-comprar"
+                  onClick={() => aumentarQuantidade(item.id)}
+                >
+                  +
+                </button>
+
+              </div>
+
+              <p className="preco">
+                Subtotal: {item.preco * item.quantidade} {item.moeda}
+              </p>
 
             </div>
+          ))}
+
+          <div className="card-produto">
+
+            <h3>Total da Compra</h3>
 
             <p className="preco">
-              Subtotal: {item.preco * item.quantidade} {item.moeda}
+              💰 {total} DZ Coins
             </p>
 
+            <button className="btn-comprar">
+              Finalizar Compra
+            </button>
+
           </div>
-        ))
+        </>
       )}
-
-      <div className="card-produto">
-        <h3>Total</h3>
-
-        <p className="preco">
-          💰 {total} DZ Coins
-        </p>
-
-        <button className="btn-comprar">
-          Finalizar Compra
-        </button>
-      </div>
 
     </section>
   )
