@@ -1,6 +1,6 @@
 import produtos from '../data/produtos'
 
-function Produtos() {
+function Produtos({ adicionarAoCarrinho }) {
   return (
     <section>
       <h2>Catálogo</h2>
@@ -8,6 +8,7 @@ function Produtos() {
       <div className="grid-produtos">
         {produtos.map((item) => (
           <div className="card-produto" key={item.id}>
+
             <div className="imagem-produto">
               📦
             </div>
@@ -22,9 +23,13 @@ function Produtos() {
               💰 {item.preco} {item.moeda}
             </p>
 
-            <button className="btn-comprar">
+            <button
+              className="btn-comprar"
+              onClick={() => adicionarAoCarrinho(item)}
+            >
               Comprar
             </button>
+
           </div>
         ))}
       </div>
