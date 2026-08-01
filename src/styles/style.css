@@ -61,3 +61,46 @@
 .btn-secundario:hover {
   background: #666;
 }
+
+/* ===== SERVIÇOS PREMIUM ===== */
+
+.servicos {
+  padding: 30px 20px;
+  background: #111;
+}
+
+.servicos h2 {
+  color: #f1c40f;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+.servico-card {
+  background: #222;
+  border: 2px solid #2ecc71;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.servico-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px #2ecc71;
+}
+
+.icone {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.servico-card h3 {
+  color: white;
+  font-size: 18px;
+}
