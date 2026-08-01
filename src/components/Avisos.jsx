@@ -1,9 +1,25 @@
 function Avisos() {
   const avisos = [
-    '🔥 Evento PvP sábado às 20h',
-    '🚚 Transporte de Material disponível',
-    '🌿 Venda de Ervas liberada',
-    '🚙 Aluguel de Veículos ativo'
+    {
+      titulo: "Evento PvP",
+      descricao: "Sábado às 20h. Premiação para os vencedores.",
+      icone: "🔥"
+    },
+    {
+      titulo: "Transporte",
+      descricao: "Serviço de transporte de materiais disponível.",
+      icone: "🚚"
+    },
+    {
+      titulo: "Venda de Ervas",
+      descricao: "Compre e venda ervas no mercado oficial.",
+      icone: "🌿"
+    },
+    {
+      titulo: "Aluguel de Veículos",
+      descricao: "Veículos disponíveis para aluguel no servidor.",
+      icone: "🚙"
+    }
   ]
 
   return (
@@ -13,7 +29,15 @@ function Avisos() {
       <div className="avisos-lista">
         {avisos.map((aviso, index) => (
           <div className="aviso-card" key={index}>
-            {aviso}
+
+            <h3>
+              {aviso.icone} {aviso.titulo}
+            </h3>
+
+            <p>
+              {aviso.descricao}
+            </p>
+
           </div>
         ))}
       </div>
