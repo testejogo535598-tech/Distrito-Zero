@@ -3,24 +3,29 @@ function Banner() {
     <section className="banner">
       <div className="banner-overlay">
 
-        <span className="status-online">
-          🟢 Servidor Online
-        </span>
+        <div className="status-online">
+          🟢 <span>Servidor Online</span>
+        </div>
 
         <h1>DISTRITO ZERO</h1>
 
-        <p>
+        <p className="banner-subtitulo">
           Mercado Oficial do Servidor O Holocausto
         </p>
 
         <div className="banner-botoes">
 
           <button className="btn-principal">
-            Entrar na Loja
+            🛒 Entrar na Loja
           </button>
 
-          <button className="btn-secundario">
-            Entrar no Discord
+          <button
+            className="btn-secundario"
+            onClick={() =>
+              window.open("https://discord.gg/SEU_LINK", "_blank")
+            }
+          >
+            💬 Entrar no Discord
           </button>
 
         </div>
