@@ -1,1 +1,93 @@
+/* ===== ESTILO GERAL ===== */
 
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#121212;
+  color:#ffffff;
+}
+
+#root{
+  max-width:1400px;
+  margin:auto;
+}
+
+section{
+  padding:30px 20px;
+}
+
+h2{
+  margin-bottom:20px;
+  color:#2ecc71;
+  text-align:center;
+}
+
+input{
+  outline:none;
+}
+
+.grid-produtos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.card-produto{
+  background:#1d1d1d;
+  border:1px solid #333;
+  border-radius:12px;
+  padding:20px;
+  text-align:center;
+}
+
+.imagem-produto{
+  font-size:60px;
+  margin-bottom:15px;
+}
+
+.preco{
+  color:#2ecc71;
+  font-weight:bold;
+  margin:12px 0;
+}
+
+.btn-comprar{
+  width:100%;
+  background:#2ecc71;
+  color:#fff;
+  border:none;
+  padding:12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.btn-comprar:hover{
+  background:#27ae60;
+}
+
+.quantidade{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin:15px 0;
+}
+
+.rodape{
+  background:#0d0d0d;
+  color:#bbb;
+  text-align:center;
+  padding:40px 20px;
+  margin-top:40px;
+}
+
+.rodape h3{
+  color:#2ecc71;
+  margin-bottom:10px;
+}
