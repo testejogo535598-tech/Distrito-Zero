@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Banner from './components/Banner'
 import ServicosPremium from './components/ServicosPremium'
+import Avisos from './components/Avisos'
 import Produtos from './components/Produtos'
 import Carrinho from './components/Carrinho'
 
