@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Banner from './components/Banner'
 import Avisos from './components/Avisos'
 import ServicosPremium from './components/ServicosPremium'
