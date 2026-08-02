@@ -21,15 +21,20 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
   }, []);
 
   const produtosFiltrados = produtos.filter((item) => {
-    const pesquisaOk = item.nome
-      .toLowerCase()
-      .includes(pesquisa.toLowerCase());
+  const pesquisaOk = item.nome
+    .toLowerCase()
+    .includes(pesquisa.toLowerCase());
 
-    const categoriaOk =
-      categoria === "Todos" || item.categoria === categoria;
+  const categoriaOk =
+    categoria === "Todos" || item.categoria === categoria;
 
-    return pesquisaOk && categoriaOk;
-  });
+  const visivel = item.visivel !== false;
+
+  const disponivel =
+    item.estoque_infinito === true || (item.estoque ?? 0) > 0;
+
+  return pesquisaOk && categoriaOk && visivel && disponivel;
+});
 
   return (
     <section>
@@ -57,6 +62,12 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
             <p className="preco">
               💰 {item.preco} {item.moeda}
             </p>
+
+            {!item.estoque_infinito && (
+  <p className="estoque">
+    📦 Estoque: {item.estoque}
+  </p>
+)}
 
             <button
               className="btn-comprar"
