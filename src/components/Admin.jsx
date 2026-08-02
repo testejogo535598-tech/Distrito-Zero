@@ -44,26 +44,7 @@ function Admin() {
 
   alert("Produto atualizado!");
   carregarProdutos();
-}
-    const { error } = await supabase
-      .from("produtos")
-      .update({
-        preco: Number(produto.preco),
-        estoque: Number(produto.estoque),
-        estoque_infinito: produto.estoque_infinito,
-        visivel: produto.visivel,
-      })
-      .eq("id", produto.id);
-
-    if (error) {
-      alert("Erro ao salvar!");
-      console.log(error);
-      return;
-    }
-
-    alert("✅ Produto atualizado!");
-    carregarProdutos();
-  }
+  } 
 
   function atualizarCampo(id, campo, valor) {
     setProdutos((lista) =>
