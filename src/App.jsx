@@ -1,11 +1,10 @@
-import { useState } from 'react'
-import Banner from './componentes/Banner'
-import Avisos from './componentes/Avisos'
-import ServicosPremium from './componentes/ServicosPremium'
-import Produtos from './componentes/Produtos'
-import Carrinho from './componentes/Carrinho'
-import Rodape from './componentes/Rodape'
-import Admin from './componentes/Admin'
+import Banner from './components/Banner'
+import Avisos from './components/Avisos'
+import ServicosPremium from './components/ServicosPremium'
+import Produtos from './components/Produtos'
+import Carrinho from './components/Carrinho'
+import Rodape from './components/Rodape'
+import Admin from './components/Admin'
 
 function App() {
   const [carrinho, setCarrinho] = useState([])
