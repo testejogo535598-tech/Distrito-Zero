@@ -23,6 +23,28 @@ function Admin() {
   }
 
   async function salvar(produto) {
+  const { data, error } = await supabase
+    .from("produtos")
+    .update({
+      preco: Number(produto.preco),
+      estoque: Number(produto.estoque),
+      estoque_infinito: produto.estoque_infinito,
+      visivel: produto.visivel,
+    })
+    .eq("id", produto.id)
+    .select();
+
+  console.log(data);
+  console.log(error);
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  alert("Produto atualizado!");
+  carregarProdutos();
+}
     const { error } = await supabase
       .from("produtos")
       .update({
