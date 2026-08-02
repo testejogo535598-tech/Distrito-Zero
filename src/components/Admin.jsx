@@ -9,16 +9,21 @@ function Admin() {
   }, []);
 
   async function carregarProdutos() {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("produtos")
       .select("*")
       .order("nome");
+
+    if (error) {
+      console.log(error);
+      return;
+    }
 
     setProdutos(data || []);
   }
 
   async function salvar(produto) {
-    await supabase
+    const { error } = await supabase
       .from("produtos")
       .update({
         preco: Number(produto.preco),
@@ -28,13 +33,22 @@ function Admin() {
       })
       .eq("id", produto.id);
 
-    alert("Produto atualizado!");
+    if (error) {
+      alert("Erro ao salvar!");
+      console.log(error);
+      return;
+    }
+
+    alert("✅ Produto atualizado!");
+    carregarProdutos();
   }
 
   function atualizarCampo(id, campo, valor) {
     setProdutos((lista) =>
       lista.map((p) =>
-        p.id === id ? { ...p, [campo]: valor } : p
+        p.id === id
+          ? { ...p, [campo]: valor }
+          : p
       )
     );
   }
@@ -69,23 +83,42 @@ function Admin() {
             type="number"
             value={produto.preco}
             onChange={(e) =>
-              atualizarCampo(produto.id, "preco", e.target.value)
+              atualizarCampo(
+                produto.id,
+                "preco",
+                e.target.value
+              )
             }
-            style={{ width: "100%", marginBottom: 10 }}
+            style={{
+              width: "100%",
+              marginBottom: 10,
+            }}
           />
 
           <label>📦 Estoque</label>
           <input
             type="number"
             value={produto.estoque}
-            onChange={(e) =>
-              atualizarCampo(produto.id, "estoque", e.target.value)
-            }
-            style={{ width: "100%", marginBottom: 10 }}
             disabled={produto.estoque_infinito}
+            onChange={(e) =>
+              atualizarCampo(
+                produto.id,
+                "estoque",
+                e.target.value
+              )
+            }
+            style={{
+              width: "100%",
+              marginBottom: 10,
+            }}
           />
 
-          <label style={{ display: "block", marginBottom: 10 }}>
+          <label
+            style={{
+              display: "block",
+              marginBottom: 10,
+            }}
+          >
             <input
               type="checkbox"
               checked={produto.estoque_infinito}
@@ -100,7 +133,12 @@ function Admin() {
             ♾️ Estoque infinito
           </label>
 
-          <label style={{ display: "block", marginBottom: 15 }}>
+          <label
+            style={{
+              display: "block",
+              marginBottom: 15,
+            }}
+          >
             <input
               type="checkbox"
               checked={produto.visivel}
