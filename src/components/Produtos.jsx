@@ -1,6 +1,25 @@
-import produtos from "../data/produtos";
+import { useEffect, useState } from "react";
+import { supabase } from "../supabase";
 
 function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
+  const [produtos, setProdutos] = useState([]);
+
+  useEffect(() => {
+    async function carregarProdutos() {
+      const { data, error } = await supabase
+        .from("produtos")
+        .select("*");
+
+      if (error) {
+        console.error(error);
+      } else {
+        setProdutos(data);
+      }
+    }
+
+    carregarProdutos();
+  }, []);
+
   const produtosFiltrados = produtos.filter((item) => {
     const pesquisaOk = item.nome
       .toLowerCase()
@@ -19,9 +38,8 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
       <div className="grid-produtos">
         {produtosFiltrados.map((item) => (
           <div className="card-produto" key={item.id}>
-
             <img
-              src={item.imagem}
+              src={item.imagem || ""}
               alt={item.nome}
               className="imagem-produto"
             />
@@ -33,7 +51,7 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
             <h3>{item.nome}</h3>
 
             <p className="descricao-produto">
-              {item.descricao}
+              {item.descrição || item.descricao}
             </p>
 
             <p className="preco">
@@ -46,7 +64,6 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
             >
               🛒 Comprar Agora
             </button>
-
           </div>
         ))}
 
