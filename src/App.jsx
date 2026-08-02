@@ -66,7 +66,11 @@ function App() {
         <Admin />
       ) : (
         <>
-          <Banner />
+          <h1 style={{ color: "red", textAlign: "center" }}>
+  TESTE APP NOVO
+</h1>
+
+<Banner />
 
           <Avisos />
 
