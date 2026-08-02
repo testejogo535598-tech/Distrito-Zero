@@ -64,8 +64,20 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
             </p>
 
             {!item.estoque_infinito && (
-  <p className="estoque">
-    📦 Estoque: {item.estoque}
+  <p
+    className={`estoque ${
+      item.estoque > 5
+        ? "estoque-verde"
+        : item.estoque > 0
+        ? "estoque-amarelo"
+        : "estoque-vermelho"
+    }`}
+  >
+    {item.estoque > 5
+      ? "🟢 Em estoque"
+      : item.estoque > 0
+      ? `🟡 Últimas unidades (${item.estoque})`
+      : "🔴 Esgotado"}
   </p>
 )}
 
