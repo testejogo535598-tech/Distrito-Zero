@@ -39,7 +39,7 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
         {produtosFiltrados.map((item) => (
           <div className="card-produto" key={item.id}>
             <img
-              src={item.imagem || ""}
+              src={item.imagem || `/imagens/${item.nome.toLowerCase().replace(/\s+/g, "-")}.png`}
               alt={item.nome}
               className="imagem-produto"
             />
