@@ -125,13 +125,7 @@ function Admin() {
     <div style={{ padding: 20, maxWidth: 1100, margin: "0 auto" }}>
       <h2>⚙️ Painel Administrativo</h2>
 
-      <button
-        className="btn-comprar"
-        onClick={carregarProdutos}
-        style={{ marginBottom: 20 }}
-      >
-        🔄 Atualizar
-      </button>
+      
 
       <div
         style={{
