@@ -60,7 +60,6 @@ function Admin() {
     }
 
     alert("Produto atualizado!");
-    
   }
 
   async function criarProduto() {
@@ -96,12 +95,12 @@ function Admin() {
       visivel: true,
       imagem: "",
     });
-
-    
   }
 
   async function excluirProduto(id) {
-    const confirmar = window.confirm("Tem certeza que deseja excluir este produto?");
+    const confirmar = window.confirm(
+      "Tem certeza que deseja excluir este produto?"
+    );
     if (!confirmar) return;
 
     const { error } = await supabase.from("produtos").delete().eq("id", id);
@@ -112,7 +111,6 @@ function Admin() {
     }
 
     alert("Produto excluído!");
-    
   }
 
   function atualizarCampo(id, campo, valor) {
@@ -124,8 +122,6 @@ function Admin() {
   return (
     <div style={{ padding: 20, maxWidth: 1100, margin: "0 auto" }}>
       <h2>⚙️ Painel Administrativo</h2>
-
-      
 
       <div
         style={{
@@ -253,7 +249,9 @@ function Admin() {
           <input
             type="text"
             value={produto.nome || ""}
-            onChange={(e) => atualizarCampo(produto.id, "nome", e.target.value)}
+            onChange={(e) =>
+              atualizarCampo(produto.id, "nome", e.target.value)
+            }
             style={{ width: "100%", marginBottom: 10, padding: 10 }}
           />
 
@@ -273,7 +271,12 @@ function Admin() {
             onChange={(e) =>
               atualizarCampo(produto.id, "descricao", e.target.value)
             }
-            style={{ width: "100%", marginBottom: 10, padding: 10, minHeight: 90 }}
+            style={{
+              width: "100%",
+              marginBottom: 10,
+              padding: 10,
+              minHeight: 90,
+            }}
           />
 
           <label>💰 Preço</label>
