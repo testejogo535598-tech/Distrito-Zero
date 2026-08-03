@@ -60,7 +60,7 @@ function Admin() {
     }
 
     alert("Produto atualizado!");
-    carregarProdutos();
+    
   }
 
   async function criarProduto() {
@@ -97,7 +97,7 @@ function Admin() {
       imagem: "",
     });
 
-    carregarProdutos();
+    
   }
 
   async function excluirProduto(id) {
@@ -112,7 +112,7 @@ function Admin() {
     }
 
     alert("Produto excluído!");
-    carregarProdutos();
+    
   }
 
   function atualizarCampo(id, campo, valor) {
