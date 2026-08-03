@@ -3,6 +3,19 @@ import { supabase } from "../supabase";
 
 function Admin() {
   const [produtos, setProdutos] = useState([]);
+const [novoProduto, setNovoProduto] = useState({
+nome: "",
+categoria: "Armas",
+descricao: "",
+preco: 0,
+moeda: "DZ Coins",
+estoque: 0,
+estoque_infinito: false,
+visivel: true,
+imagem: "",
+});
+
+Tipo Assim?
 
   useEffect(() => {
     carregarProdutos();
