@@ -4,37 +4,57 @@ import { supabase } from "../supabase";
 function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
   const [produtos, setProdutos] = useState([]);
 
-  useEffect(() => {
-    async function carregarProdutos() {
-      const { data, error } = await supabase
-        .from("produtos")
-        .select("*");
+  async function carregarProdutos() {
+    const { data, error } = await supabase
+      .from("produtos")
+      .select("*")
+      .order("nome");
 
-      if (error) {
-        console.error(error);
-      } else {
-        setProdutos(data);
-      }
+    if (error) {
+      console.error(error);
+      return;
     }
 
+    setProdutos(data || []);
+  }
+
+  useEffect(() => {
     carregarProdutos();
+
+    const canal = supabase
+      .channel("produtos-realtime")
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "produtos",
+        },
+        () => {
+          carregarProdutos();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(canal);
+    };
   }, []);
 
   const produtosFiltrados = produtos.filter((item) => {
-  const pesquisaOk = item.nome
-    .toLowerCase()
-    .includes(pesquisa.toLowerCase());
+    const nome = (item.nome || "").toLowerCase();
+    const pesquisaOk = nome.includes(pesquisa.toLowerCase());
 
-  const categoriaOk =
-    categoria === "Todos" || item.categoria === categoria;
+    const categoriaOk =
+      categoria === "Todos" || item.categoria === categoria;
 
-  const visivel = item.visivel !== false;
+    const visivel = item.visivel !== false;
 
-  const disponivel =
-    item.estoque_infinito === true || (item.estoque ?? 0) > 0;
+    const disponivel =
+      item.estoque_infinito === true || (item.estoque ?? 0) > 0;
 
-  return pesquisaOk && categoriaOk && visivel && disponivel;
-});
+    return pesquisaOk && categoriaOk && visivel && disponivel;
+  });
 
   return (
     <section>
@@ -44,8 +64,13 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
         {produtosFiltrados.map((item) => (
           <div className="card-produto" key={item.id}>
             <img
-              src={item.imagem || `/imagens/${item.nome.toLowerCase().replace(/\s+/g, "-")}.png`}
-              alt={item.nome}
+              src={
+                item.imagem ||
+                `/imagens/${(item.nome || "")
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}.png`
+              }
+              alt={item.nome || "Produto"}
               className="imagem-produto"
             />
 
@@ -56,7 +81,7 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
             <h3>{item.nome}</h3>
 
             <p className="descricao-produto">
-              {item.descrição || item.descricao}
+              {item.descricao || item.descrição || ""}
             </p>
 
             <p className="preco">
@@ -64,22 +89,22 @@ function Produtos({ pesquisa, categoria, adicionarAoCarrinho }) {
             </p>
 
             {!item.estoque_infinito && (
-  <p
-    className={`estoque ${
-      item.estoque > 5
-        ? "estoque-verde"
-        : item.estoque > 0
-        ? "estoque-amarelo"
-        : "estoque-vermelho"
-    }`}
-  >
-    {item.estoque > 5
-      ? "🟢 Em estoque"
-      : item.estoque > 0
-      ? `🟡 Últimas unidades (${item.estoque})`
-      : "🔴 Esgotado"}
-  </p>
-)}
+              <p
+                className={`estoque ${
+                  (item.estoque ?? 0) > 5
+                    ? "estoque-verde"
+                    : (item.estoque ?? 0) > 0
+                    ? "estoque-amarelo"
+                    : "estoque-vermelho"
+                }`}
+              >
+                {(item.estoque ?? 0) > 5
+                  ? "🟢 Em estoque"
+                  : (item.estoque ?? 0) > 0
+                  ? `🟡 Últimas unidades (${item.estoque ?? 0})`
+                  : "🔴 Esgotado"}
+              </p>
+            )}
 
             <button
               className="btn-comprar"
