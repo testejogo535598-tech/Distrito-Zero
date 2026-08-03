@@ -6,6 +6,7 @@ import Produtos from "./components/Produtos";
 import Carrinho from "./components/Carrinho";
 import Rodape from "./components/Rodape";
 import Admin from "./components/Admin";
+import Checkout from "./components/Checkout";
 
 const categorias = ["Todos", "Armas", "Veículos", "Serviços"];
 
@@ -14,6 +15,7 @@ function App() {
   const [pesquisa, setPesquisa] = useState("");
   const [categoria, setCategoria] = useState("Todos");
   const [modoAdmin, setModoAdmin] = useState(false);
+  const [mostrarCheckout, setMostrarCheckout] = useState(false);
 
   function adicionarAoCarrinho(produto) {
     setCarrinho((atual) => {
@@ -34,7 +36,9 @@ function App() {
   function aumentarQuantidade(id) {
     setCarrinho((atual) =>
       atual.map((item) =>
-        item.id === id ? { ...item, quantidade: item.quantidade + 1 } : item
+        item.id === id
+          ? { ...item, quantidade: item.quantidade + 1 }
+          : item
       )
     );
   }
@@ -43,7 +47,9 @@ function App() {
     setCarrinho((atual) =>
       atual
         .map((item) =>
-          item.id === id ? { ...item, quantidade: item.quantidade - 1 } : item
+          item.id === id
+            ? { ...item, quantidade: item.quantidade - 1 }
+            : item
         )
         .filter((item) => item.quantidade > 0)
     );
@@ -54,6 +60,7 @@ function App() {
       <header style={headerStyle}>
         <div>
           <div style={brandStyle}>Distrito Zero</div>
+
           <div style={subtitleStyle}>
             Comércio, confiança e sobrevivência
           </div>
@@ -64,7 +71,7 @@ function App() {
           onClick={() => setModoAdmin((atual) => !atual)}
           style={adminButtonStyle}
         >
-          {modoAdmin ? "🛒 Voltar para a Loja" : "⚙️ Painel Admin"}
+          {modoAdmin ? "🛒 Voltar para Loja" : "⚙️ Painel Admin"}
         </button>
       </header>
 
@@ -80,8 +87,13 @@ function App() {
 
           <section style={searchSectionStyle}>
             <div style={searchHeaderStyle}>
-              <h2 style={sectionTitleStyle}>🛍️ Catálogo</h2>
-              <span style={badgeStyle}>Itens atualizados em tempo real</span>
+              <h2 style={sectionTitleStyle}>
+                🛍️ Catálogo
+              </h2>
+
+              <span style={badgeStyle}>
+                Itens atualizados em tempo real
+              </span>
             </div>
 
             <input
@@ -103,7 +115,7 @@ function App() {
                     opacity: categoria === cat ? 1 : 0.68,
                     boxShadow:
                       categoria === cat
-                        ? "0 0 0 1px rgba(46, 204, 113, 0.35)"
+                        ? "0 0 0 1px rgba(46,204,113,.35)"
                         : "none",
                   }}
                 >
@@ -112,7 +124,6 @@ function App() {
               ))}
             </div>
           </section>
-
           <Produtos
             pesquisa={pesquisa}
             categoria={categoria}
@@ -123,7 +134,15 @@ function App() {
             carrinho={carrinho}
             aumentarQuantidade={aumentarQuantidade}
             diminuirQuantidade={diminuirQuantidade}
+            abrirCheckout={() => setMostrarCheckout(true)}
           />
+
+          {mostrarCheckout && (
+            <Checkout
+              carrinho={carrinho}
+              fechar={() => setMostrarCheckout(false)}
+            />
+          )}
 
           <Rodape />
         </>
@@ -146,7 +165,7 @@ const headerStyle = {
   gap: "16px",
   padding: "18px 20px",
   borderBottom: "1px solid rgba(255,255,255,0.08)",
-  background: "rgba(8, 12, 18, 0.82)",
+  background: "rgba(8,12,18,0.82)",
   backdropFilter: "blur(10px)",
   position: "sticky",
   top: 0,
@@ -194,17 +213,16 @@ const badgeStyle = {
   fontSize: "0.85rem",
   padding: "6px 10px",
   borderRadius: "999px",
-  background: "rgba(46, 204, 113, 0.12)",
-  border: "1px solid rgba(46, 204, 113, 0.28)",
+  background: "rgba(46,204,113,.12)",
+  border: "1px solid rgba(46,204,113,.28)",
   color: "#c9f7dd",
 };
-
 const searchInputStyle = {
   width: "100%",
   padding: "15px",
   borderRadius: "12px",
-  border: "1px solid rgba(46, 204, 113, 0.55)",
-  background: "rgba(18, 24, 31, 0.95)",
+  border: "1px solid rgba(46,204,113,.55)",
+  background: "rgba(18,24,31,.95)",
   color: "#fff",
   fontSize: "16px",
   marginBottom: "14px",
